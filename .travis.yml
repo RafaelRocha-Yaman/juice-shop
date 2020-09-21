@@ -2,15 +2,9 @@ dist: xenial
 language: node_js
 os:
   - linux
-  - osx
-  - windows
 arch:
   - amd64
-  - arm64
 node_js:
-  - 14
-  - 12
-  - 10
 cache:
   directories:
     - node_modules
@@ -32,8 +26,6 @@ before_deploy:
   - npm install -g grunt-cli
   - npm run package:ci
 jobs:
-  allow_failures:
-    - arch: arm64
   include:
     - stage: lint
       if: tag IS blank
@@ -78,3 +70,6 @@ jobs:
         - cd juice-shop_*
         - npm start &
         - "../../test/smoke/smoke-test.sh http://localhost:3000"
+addons:
+  srcclr: true
+    debug: true
