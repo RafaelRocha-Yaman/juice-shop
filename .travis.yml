@@ -15,6 +15,7 @@ stages:
   - integration
 addons:
   chrome: stable
+  srcclr: true
 services:
   - docker
 install:
@@ -70,6 +71,3 @@ jobs:
         - cd juice-shop_*
         - npm start &
         - "../../test/smoke/smoke-test.sh http://localhost:3000"
-addons:
-  srcclr: true
-    debug: true
