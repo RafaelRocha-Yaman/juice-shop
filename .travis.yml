@@ -2,11 +2,8 @@ dist: xenial
 language: node_js
 os:
   - linux
-  - osx
-  - windows
 arch:
   - amd64
-  - arm64
 node_js:
   - 14
   - 12
@@ -63,17 +60,3 @@ jobs:
         - export NODE_ENV=test
         - npm run preprotractor
         - npm run e2e -- subfolder
-    - stage: smoke
-      if: tag IS blank
-      before_install:
-        - chmod +x test/smoke/smoke-test.sh
-      install:
-        - npm install --production
-        - npm install -g grunt-cli
-        - npm run package:ci
-      script:
-        - cd dist
-        - tar -zxf juice-shop-*.tgz
-        - cd juice-shop_*
-        - npm start &
-        - "../../test/smoke/smoke-test.sh http://localhost:3000"
