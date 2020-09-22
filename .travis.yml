@@ -33,8 +33,7 @@ jobs:
   include:
     - stage: lint
       if: tag IS blank
-      install: npm i -g standard@14 && npm i -g yaml-schema-validator && cd frontend
-        && npm install && cd ..
+      install: npm i -g standard@14 && npm i -g yaml-schema-validator && cd frontend && npm install && cd ..
       script:
         - npm run lint
         - npm run lint:config -- -f ./config/7ms.yml
