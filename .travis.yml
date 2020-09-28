@@ -50,5 +50,4 @@ jobs:
     - stage: veracode
       install: sudo apt install default-jre-headless default-jre
       script:
-        - java -jar VeracodeJavaAPI.jar -vid $Veracode_API_ID -vkey $Veracode_API_Token -action beginprescan /
-        -appid 54226953391 -autoscan true
+        - java -jar VeracodeJavaAPI.jar -vid $Veracode_API_ID -vkey $Veracode_API_Token -action beginprescan -appid 953391 -autoscan true
