@@ -50,4 +50,6 @@ jobs:
     - stage: veracode
       install: sudo apt install default-jre-headless default-jre
       script:
-        - java -jar VeracodeJavaAPI.jar -vid $Veracode_API_ID -vkey $Veracode_API_Token -action getapplist
+        - zip -r juiceshop.zip .
+        - java -jar VeracodeJavaAPI.jar -vid $Veracode_API_ID -vkey $Veracode_API_Token -action uploadfile -appid 953391 -filepath ./juiceshop.zip 
+        - java -jar VeracodeJavaAPI.jar -vid $Veracode_API_ID -vkey $Veracode_API_Token -action beginprescan -appid 953391 -autoscan true
